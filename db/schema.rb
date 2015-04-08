@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403231853) do
+ActiveRecord::Schema.define(version: 20150406192127) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "followings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "following_user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "followings", ["following_user_id"], name: "index_followings_on_following_user_id"
+  add_index "followings", ["user_id"], name: "index_followings_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
