@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
     through: :followings, 
     source: :following_user  #  esto seria en cierta manera el tipo que quiero que devuelva
 
-  has_many :comments
-
   def following?(following_user) #el signo de pregunta es parte del nombre 
     followings.where(following_user_id: following_user.id).first
    # esto devuelve verdadero o falso se puede hacer con if tambien

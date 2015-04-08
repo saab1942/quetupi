@@ -1,2 +1,38 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>Comments</h1>
+
+
+
+<%= render @comments %>
+
+      <div class="comments">
+                <% for comment in @comments %>
+           
+             
+                <%= comment.description %>
+               
+               <br>by: <%= link_to  comment.user.email,comment.user %>
+                
+               <%= time_ago_in_words(comment.created_at ) %>
+               
+                   
+            <% end %> 
+            </div>
+ 
+     
+        
+           
+               
+         
+              <%= link_to('Nuevo Tweet', new_comment_path) %>
+        
+              <h1>Bienvenidos al Mini-Twitter</h1>
+             <%= link_to('Registrate', new_user_registration_path)  %>
+						
+        
+    
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,51 @@
+<h1>Welcome#index</h1>
+
+
+<h1>Comments</h1>
+
+<br>
+
+
+
+
+
+
+
+
+
+      
+
+      <div class="comments">
+            <% for comment in @comments %>
+            <hr>
+            
+              <div class="comments">
+                <%= comment.description %>
+               
+               <br><span>by: <%= link_to  comment.user.email,comment.user %>
+                 <li class="round-image-50"><%= image_tag(comment.user.avatar.url(:thumb)) %></li>
+              
+               <br><%= time_ago_in_words(comment.created_at ) %>
+               
+              </span>
+                <hr>
+         </div>
+
+            
+            
+                
+          <% end %>
+
+        
+              <h1>Bienvenidos al Mini-Twitter</h1>
+             <%= link_to('Registrate', new_user_registration_path)  %>
+						<%= link_to('Nuevo Tweet', new_comment_path) %>
+        
+</div>
+    
+
+
+</body>
+</html>
+
+
